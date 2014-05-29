@@ -185,7 +185,8 @@ document.getElementById('rssCont').innerHTML = rssContent;
  
 <div data-options="dxView : { name: 'rss', toolbar:false  } " >
   <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " > 
-
+  
+<div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
 <!-- <div data-bind="dxButton: { text: 'Click me', clickAction: getRss }"></div> used for test -->
 
 <!-- block with rss feed -->
