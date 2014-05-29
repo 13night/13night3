@@ -13,7 +13,7 @@ loadPanelVisible = ko.observable(false);
 startLoading2 = function() {
   loadPanelVisible(true);
 
-  setTimeout($.proxy(this.finishLoading, this), 3000);
+  setTimeout($.proxy(this.finishLoading2, this), 3000);
 };
 finishLoading2 = function() {
   loadPanelVisible(false);
@@ -163,7 +163,12 @@ document.getElementById('rssCont').innerHTML = rssContent;
 	bottom:0;
 	left:0;
 }
+
+.loader{
+	position:fixed;
+	z-index:200;
 }
+
 /*.button{
     margin-top: 25px;
 }
