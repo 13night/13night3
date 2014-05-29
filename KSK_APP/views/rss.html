@@ -50,7 +50,7 @@ function removeRss() {
 var getRss = function(){
 	removeRss();
 	 //var i = 0;
-        jQuery.ajax({
+      setTimeout(  jQuery.ajax({
             type: "GET", // метод передачи данных, можно пропустить - по умолчанию и так get
             url: "http://kskinvest.ru/rss-feed.html", // путь к файлу, который будем читать
             dataType: "xml", // тип данных, с которыми работаем
@@ -85,7 +85,7 @@ var getRss = function(){
                    //document.getElementById('data').innerHTML=desc;
                 });         
             }
-        });
+        }),5000)
 }
 
 
