@@ -1,6 +1,20 @@
 ﻿<!--      ЛОББИ С КАРТОЙ       -->
 
 <script>
+
+loadPanelVisible = ko.observable(false);
+startLoading = function() {
+  loadPanelVisible(true);
+//  setTimeout($.proxy(this.finishLoading, this), 3000);
+};
+finishLoading = function() {
+  loadPanelVisible(false);
+};
+
+
+
+
+
 mapMarkers = [
   {
     title: "Жилой район Облака",
@@ -40,7 +54,9 @@ tabClicked = function (itemClickOptions) {
 }
 
  var gorss=function() {
+ 	setInterval(getRss(),5000);
 	AutoWashApp.app.navigate('rss');
+	
 }
 
 </script>
@@ -61,6 +77,10 @@ tabClicked = function (itemClickOptions) {
 
 <div data-options="dxView : { name: 'map', toolbar:false  } " >
   <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >     
+          
+           <div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
+       
+          
           
           
 <div class="prilip">
@@ -84,6 +104,7 @@ tabClicked = function (itemClickOptions) {
           
 
 			<div class="map" data-bind="dxMap: {
+				readyAction: finishLoading,
   				markers: mapMarkers,
                 width: screen.width,
                 height: screen.height,
