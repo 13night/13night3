@@ -1,0 +1,123 @@
+﻿<!--     МОЙКА      -->
+
+<script>
+date = new Date();
+time = new Date();
+
+ var golobby=function() {
+	AutoWashApp.app.navigate('lobby');
+}
+
+ var gorss=function() {
+	AutoWashApp.app.navigate('rss');
+}
+
+galleryData32 = [
+    "img/3kewe2.png",
+    "img/3kewe2.png",
+    "img/3kewe2.png"
+];
+durationValue = ko.observable(400);
+
+
+
+</script>
+
+<style>
+body{
+  text-align: center;
+}
+.gallery32{
+  margin:0;
+  height:300px;
+}
+.dx-field .dx-field-label{
+  width:auto;
+}
+.prilip {
+  z-index: 101;
+  background:#2d2d2d; 
+  width:100%; 
+  height:50px;
+	position: fixed;
+	bottom:0;
+	left:0;
+	display:block;
+}
+</style>
+
+
+<div data-options="dxView : { name: 'hata3k2', toolbar:false  } " >
+  <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >  
+  
+<div class="prilip">
+          <div style="width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gohome();">
+            <div style="padding-top:15px; word-break:break-all;">КВАРТИРЫ</div>
+          </div>
+          <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gorss();">
+			<div style="padding-top:15px; margin-left:-5px;">НОВОСТИ</div>
+          </div>
+		  <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gokont();">
+			<div style="padding-top:15px;">КОНТАКТЫ</div>
+          </div>
+          <div style="clear:both;"></div>
+          </div> 
+  
+    <div data-bind="dxScrollView: { showScrollbar:false }">
+	
+	<div style="width:100%; background:#2b2b2b; height:20px; float:left; color:#fbfcfc; font-size:18px; text-align:left;">
+            <div data-bind="dxAction: { action: '#_back' }" style="margin-left:10px; margin-top:10px;"> < Назад </div>
+    </div>
+	
+	<br/><br/>
+    
+	<div style="min-height:100%">
+           
+       <div class="gallery32" data-bind="dxGallery: {
+  dataSource: galleryData32,
+  loop: true,
+  slideshowDelay: 3500,
+  animationDuration: durationValue
+}"></div>
+		<div style="width:100%; background:#fbfcfc; text-align:left;">
+        <b style="margin-left:15px;">ТРЕХКОМНАТНАЯ КВАРТИРА</b><br/><br/>
+        <b style="margin-left:15px;">Площадь: </b> 71,75 кв.м<br/>
+        <b style="margin-left:15px;">Цена: <font style="color:#017cb8; font-size:22px;"> 3 180 000 р</font></b><br/><br/>
+        <div style="margin-left:15px; font-size:14px;">
+		<b style="font-size:18px;">Описание:</b><br/>
+		<b>Застройщик:</b>	КСК-инвест<br/>
+		<b>Дата начала строительства:</b>		2 квартал 2014<br/>
+		<b>Дата окончания строительства:</b>		4 квартал 2015<br/>
+		<b>Кол-во этажей:</b>		8/9/12<br/>
+		<b>Адрес комплекса:</b>		Карельский пр.<br/>
+		<b>Технология строительства:</b>		панельное домостроение<br/><br/>
+		<b style="font-size:18px;">Расположение дома:</b><br/>
+		<img src="img/raspolojenie_doma.jpg" style="width:94%; height:auto; border:0px;"/>
+		</div><br/><br/>
+        <b style="margin-left:15px;">Менеджер: </b> Максим<br/>
+        <b style="margin-left:15px;">Время работы: </b> <b style="font-size:10px;">пн-пт.</b> с 9.00 - 18.00<br/>
+        <b style="margin-left:15px;">Телефон: </b> +7 (921) 456-07-80<br/><br/>
+        <a href="tel:+79214560780" style="text-decoration:none;">
+        <div style="width:81%; background:#017cb8; color:#fbfcfc;  margin-left:15px; padding:15px; text-align:center; ">
+        ПОЗВОНИТЬ МАКСИМУ
+        </div>
+        </a>
+		<br/><br/>
+        <b style="margin-left:15px;">Менеджер: </b> Марина<br/>
+        <b style="margin-left:15px;">Время работы: </b> <b style="font-size:10px;">пн-пт.</b> с 9.00 - 18.00<br/>
+        <b style="margin-left:15px;">Телефон: </b> +7 921 228-17-36<br/><br/>
+        <a href="tel:+79212281736" style="text-decoration:none;">
+        <div style="width:81%; background:#017cb8; color:#fbfcfc;  margin-left:15px; padding:15px; text-align:center; ">
+        ПОЗВОНИТЬ МАРИНЕ
+        </div>
+        </a>
+		<br/>
+		<br/>
+		<br/>
+        </div>
+		
+		</div>
+    
+    </div>
+    </div>
+</div>

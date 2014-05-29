@@ -1,0 +1,100 @@
+﻿<!--      ЛОББИ С КАРТОЙ       -->
+
+<script>
+mapMarkers = [
+  {
+    title: "Жилой район Облака",
+    location: [61.764677979371555,34.364891052246094],
+    clickAction: function () { document.getElementById('moika1').style.display = 'block';
+							   document.getElementById('dark_bg').style.display = 'block'; 	
+	}
+  },
+  {
+    title: "Дом на Первомайском проспекте",
+    location: [61.80018770439849,34.321691393852234],
+	clickAction: function () { document.getElementById('moika1').style.display = 'block';
+							   document.getElementById('dark_bg').style.display = 'block';  }
+  }
+];
+ 
+providers = [
+  { text: "google" }
+];
+currentProvider = ko.observable("google");
+ 
+changeMarkerVisibility = function () {
+    mapMarkers[0].tooltip.isShown = !mapMarkers[0].tooltip.isShown;
+}
+ 
+//Assigns the clicked tab text to the currentProvider variable
+tabClicked = function (itemClickOptions) {
+  currentProvider(itemClickOptions.itemData.text);
+};
+
+ var gohome=function() {
+	AutoWashApp.app.navigate('home');
+}
+
+ var gomoika=function() {
+	AutoWashApp.app.navigate('moika');
+}
+
+ var gorss=function() {
+	AutoWashApp.app.navigate('rss');
+}
+
+</script>
+
+<style>
+.prilip {
+  z-index: 101;
+  background:#2d2d2d; 
+  width:100%; 
+  height:50px;
+	position: fixed;
+	bottom:0;
+	left:0;
+	display:block;
+}
+</style>
+
+
+<div data-options="dxView : { name: 'map', toolbar:false  } " >
+  <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >     
+          
+          
+<div class="prilip">
+          <div style="width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gohome();">
+            <div style="padding-top:15px; word-break:break-all;">КВАРТИРЫ</div>
+          </div>
+          <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gorss();">
+			<div style="padding-top:15px; margin-left:-5px;">НОВОСТИ</div>
+          </div>
+		  <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gokont();">
+			<div style="padding-top:15px;">КОНТАКТЫ</div>
+          </div>
+          <div style="clear:both;"></div>
+          </div>  
+          
+         <div style="width:100%; background:#2b2b2b; height:20px; float:left; color:#fbfcfc; font-size:18px; text-align:left;">
+            <div data-bind="dxAction: { action: '#_back' }" style="margin-left:10px; margin-top:10px;"> < Назад </div>
+    </div>
+	
+	<br/><br/>
+          
+
+			<div class="map" data-bind="dxMap: {
+  				markers: mapMarkers,
+                width: screen.width,
+                height: screen.height,
+				location: '61.8085012, 34.30240631',
+				zoom: 5,
+                markerIconSrc: 'img/marker_ico.png' ,
+  				provider: currentProvider
+				}"></div>
+	</div>
+    </div>
+</div>
+         
+    </div>
+</div>

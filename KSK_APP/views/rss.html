@@ -1,0 +1,241 @@
+﻿<!--     МОЙКА      -->
+
+<script>
+//overlayVisible = ko.observable(false);
+var data = new Object ();
+var rssContent;
+var rssTitle;
+//hideOverlay = function () {
+//    overlayVisible(false);
+//};
+
+
+buttonVisible = ko.observable(true);
+popupVisible = ko.observable(false);
+showPopup = function () {
+  popupVisible(true);
+};
+hidePopup = function () {
+  popupVisible(false);
+};
+
+
+
+
+ var gohome=function() {
+ AutoWashApp.app.navigate('home');
+}
+
+function removeRss() {
+
+   var re='items'
+   var o=document.getElementsByTagName('div')
+
+   var i
+
+   for (i=o.length; i>0; i--) {
+
+      if (o[i-1].className.search(re) !=-1) {
+
+         o[i-1].parentNode.removeChild(o[i-1])
+
+      }
+
+   }
+
+}
+
+
+
+var getRss = function(){
+	removeRss();
+	 //var i = 0;
+        jQuery.ajax({
+            type: "GET", // метод передачи данных, можно пропустить - по умолчанию и так get
+            url: "http://kskinvest.ru/rss-feed.html", // путь к файлу, который будем читать
+            dataType: "xml", // тип данных, с которыми работаем
+            success: function(xml) { // переменная названа xml. ее можно назвать как либо по другому
+            /*
+
+                в ответе приходит объект XML.
+
+                чтобы добраться до необходимого узла, используем jQuery-поиск по DOM узлам
+
+                например, var idItem = jQuery(xml).find("#item1").eq(1).attr("id");
+
+            */
+            jQuery(xml).find('item').each(
+                function()
+                {
+               	
+                   var id = jQuery(this).attr('id'),
+                        title = jQuery(this).find('title').text(),
+                       // url = jQuery(this).find('url').text(),
+                        desc = jQuery(this).find('description').text();
+                        
+                       //return showRssText(title,desc,url);
+                       //alert(desc);
+                   
+                     	data[title] = desc;
+                     	rssTitle = title;
+                         //alert(data);
+                        //return showRssText(data);
+                // $('<div class="items"></div>').html('<h2><a href="'+url+'">'+title+'</a></h2><p>'+desc+'</p>').appendTo('#newsData');
+                  $('<div class="items" ></div>').html('<h2 onClick ="showRssText(this); return false">'+title+'</h2').appendTo('#newsData');
+                   //document.getElementById('data').innerHTML=desc;
+                });         
+            }
+        });
+}
+
+
+var showRssText = function(node){
+//	overlayVisible(true);
+  //alert(data[node.innerHTML]);
+
+popupTitle = rssTitle;
+rssContent = data[node.innerHTML];
+
+showPopup();
+//document.getElementById('rssTitle').innerHTML = title;
+document.getElementById('rssCont').innerHTML = rssContent;
+}
+
+
+
+
+</script>
+
+<style>
+.prilip {
+  z-index: 101;
+  background:#2d2d2d; 
+  width:100%; 
+  height:50px;
+	position: fixed;
+	bottom:0;
+	left:0;
+	display:block;
+}
+
+#data {
+ background: black;
+ text-align: left;
+}
+
+
+#newsData{
+	
+	background: black;
+	color: white;
+}
+
+.items{
+	position:relative;
+	height:auto;
+	width: 90%;
+	background:#505050;
+	margin-top: 3%;
+	text-align:center;
+	left:5%;
+	text-shadow:2px,3px,5px,black;
+	border:2px;
+	border-radius:5px;
+	
+}
+.popUps{
+	border:2px;
+	border-radius:5px;
+}
+#hideNewsButton{
+	position:fixed;
+	width:100%;
+	bottom:0;
+	left:0;
+}
+}
+/*.button{
+    margin-top: 25px;
+}
+.overlayContents{
+  padding: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 15px;
+  height: 150px;
+}
+.dx-theme-ios .overlayContents{
+  border-color:#43628D;
+  background-color:#F7F7F7;
+}
+.dx-theme-android .overlayContents{
+  border-color:#FFFFFF;
+  background-color:#5F5F5F;
+}
+.dx-theme-win8 .overlayContents{
+  border-color: #E4E4E4;
+  background-color:#333333;
+}*/
+
+
+
+
+</style>
+
+ 
+<div data-options="dxView : { name: 'rss', toolbar:false  } " >
+  <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " > 
+
+<!-- <div data-bind="dxButton: { text: 'Click me', clickAction: getRss }"></div> used for test -->
+
+<!-- block with rss feed -->
+<div id="data" data-bind="dxScrollView: { }">
+
+<!-- блок с заголовком рсс -->
+	<div id = "newsData" ></div>
+	
+<!-- окно с контентом рсс -->	
+	<div class="popUps" data-bind="dxPopup:{visible:popupVisible, closeOnOutsideClick: true}">
+    <div data-options="dxTemplate:{name: 'title'}">
+        <p><b data-bind="text: popupTitle"></b></p>
+        <!--<p><span data-bind="dxCheckBox: { checked: buttonVisible }"></span>&nbsp;Show "Hide popup" button</p>-->
+    </div>
+    <div data-options="dxTemplate:{name: 'content'}">
+        
+        <p id = "rssCont">rssContent</p>
+        <div id ="hideNewsButton" data-bind="dxButton: { text: 'Hide popup', clickAction: hidePopup, visible: buttonVisible }"></div>
+    </div>
+</div>
+	
+
+</div>
+
+<!--<div id="overlayContainer" data-bind="dxOverlay: { visible: overlayVisible }">
+  <div class="overlayContents">
+      <p>The overlay window text.</p>
+      <div class="button" data-bind="dxButton: { text: 'Hide overlay', clickAction: hideOverlay }"></div>
+  </div>
+</div>-->
+
+
+
+
+    
+    <div id = "prilip1" class="prilip">
+          <div style="width:33%; height:50px; float:left; color:#fbfcfc; font-size:0,5em;" onClick="gohome();">
+            <div style="padding-top:13px;">НАЗАД</div>
+          </div>
+          <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:0,5em;" onClick="getRss();">
+			<div style="padding-top:13px; margin-left:-5px;">Обновить</div>
+          </div>
+		  <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:0,5em;" onClick="gohome();">
+			<div style="padding-top:13px;">ГЛАВНАЯ</div>
+          </div>
+          <div style="clear:both;"></div>
+          </div>  
+          
+          <iframe style="width:95%; background:#fbfcfc; padding:15px; text-align:left; height:800px;" src="views/news.html">
+    	  </iframe>
+    </div>
+</div>
+
