@@ -3,6 +3,7 @@
 <script>
 
 loadPanelVisible = ko.observable(false);
+
 startLoading = function() {
   loadPanelVisible(true);
 //  setTimeout($.proxy(this.finishLoading, this), 3000);
@@ -84,7 +85,7 @@ tabClicked = function (itemClickOptions) {
 <div data-options="dxView : { name: 'map', toolbar:false  } " >
   <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >     
           
-           <div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
+ <div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
        
           
           
