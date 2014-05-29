@@ -11,6 +11,7 @@ var rssTitle;
 loadPanelVisible = ko.observable(false);
 
 startLoading2 = function() {
+	alert('lal');
   loadPanelVisible(true);
 
   setTimeout($.proxy(this.finishLoading2, this), 3000);
