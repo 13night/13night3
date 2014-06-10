@@ -41,20 +41,9 @@
 <div data-options="dxView : { name: 'home' } " >
 <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
 
-<div class="prilip">
-          <div style="width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gohome();">
-            <div style="padding-top:15px; word-break:break-all;">КВАРТИРЫ</div>
-          </div>
-          <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gorss();">
-			<div style="padding-top:15px; margin-left:-5px;">НОВОСТИ</div>
-          </div>
-		  <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gokont();">
-			<div style="padding-top:15px;">КОНТАКТЫ</div>
-          </div>
-          <div style="clear:both;"></div>
-          </div> 
+
 		  
-		<div data-bind="dxScrollView: { }">
+		<div data-bind="dxScrollView: {useNative:true}">
 		
 		<div style="min-height:100%">
 		
@@ -76,6 +65,22 @@
 	   </div>
 	   
 	   </div>
+	   
+	   <div class="prilip">
+          <div style="width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gohome();">
+            <div style="padding-top:15px; word-break:break-all;">КВАРТИРЫ</div>
+          </div>
+          <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gorss();">
+			<div style="padding-top:15px; margin-left:-5px;">НОВОСТИ</div>
+          </div>
+		  <div style=" width:33%; height:50px; float:left; color:#fbfcfc; font-size:80%;" onClick="gokont();">
+			<div style="padding-top:15px;">КОНТАКТЫ</div>
+          </div>
+          <div style="clear:both;"></div>
+          </div> 
+	   
+	   
+	   
 	   
        </div>
 </div>
