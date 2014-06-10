@@ -8,7 +8,7 @@ startLoading3 = function() {
 
   loadPanelVisible(true);
 
-  setTimeout($.proxy(this.finishLoading3, this), 5000);
+  setTimeout($.proxy(this.finishLoading3, this), 15000);
 };
 finishLoading3 = function() {
   loadPanelVisible(false);
@@ -70,7 +70,10 @@ $( document ).ready(function() {
 	
 }
 
-
+.loader{
+	position:fixed;
+	z-index:200;
+}
 </style>
 
 <div data-options="dxView : { name: 'home' } " >
