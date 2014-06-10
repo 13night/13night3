@@ -9,7 +9,11 @@
 }
 
  var gorss=function() {
-	AutoWashApp.app.navigate('rss');
+ 	startLoading2();
+ 	AutoWashApp.app.navigate('rss');
+	setInterval(getRss(),5000);
+ 
+	
 }
 
 galleryDataper2 = [
