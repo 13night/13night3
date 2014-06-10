@@ -16,7 +16,13 @@
  var gokont=function() {
 	AutoWashApp.app.navigate('kontakty');
 }
-
+ var gorss=function() {
+ 	startLoading2();
+ 	AutoWashApp.app.navigate('rss');
+	setInterval(getRss(),5000);
+ 
+	
+}
 </script>
 
 <style>
