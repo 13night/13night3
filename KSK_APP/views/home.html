@@ -2,6 +2,13 @@
 <script>
 
 
+$( document ).ready(function() {
+    
+     var scrollView = $("#homeData").dxScrollView("instance");
+     setTimeout(scrollView.update(),2000);
+    
+  });
+
 
  var go=function() {
 	AutoWashApp.app.navigate('lobby');
