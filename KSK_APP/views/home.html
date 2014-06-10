@@ -1,5 +1,15 @@
 ﻿<!--      ЛОББИ С ЖИЛЫМИ КОМПЛЕКСАМИ      -->
 <script>
+
+
+$( document ).ready(function() {
+    
+     var scrollView = $("#homeData").dxMap("instance");
+     setTimeoute(scrollView.update(),2000);
+    
+  });
+
+
  var go=function() {
 	AutoWashApp.app.navigate('lobby');
 }
@@ -38,9 +48,7 @@
 }
 
 
-#homeData {
- background:black;
-}
+
 </style>
 
 <div data-options="dxView : { name: 'home' } " >
@@ -48,7 +56,7 @@
 
 
 		  
-		<div  data-bind="dxScrollView: {useNative:true}">
+		<div id = "homeData"  data-bind="dxScrollView: {useNative:true}">
 		
 		<div  style="min-height:100%">
 		
