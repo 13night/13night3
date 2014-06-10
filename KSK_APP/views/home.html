@@ -4,13 +4,13 @@
 
 loadPanelVisible = ko.observable(false);
 
-startLoading2 = function() {
+startLoading3 = function() {
 
   loadPanelVisible(true);
 
-  setTimeout($.proxy(this.finishLoading2, this), 1000);
+  setTimeout($.proxy(this.finishLoading3, this), 5000);
 };
-finishLoading2 = function() {
+finishLoading3 = function() {
   loadPanelVisible(false);
   getRss();
 };
@@ -50,7 +50,7 @@ finishLoading2 = function() {
 } 
 
 $( document ).ready(function() {
-    setInterval(gohome(),5000);
+    startLoading3();
   });
 
 
@@ -75,7 +75,7 @@ $( document ).ready(function() {
 <div data-options="dxView : { name: 'home' } " >
 <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " >
 
-
+<div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
 		  
 		<div id = "homeData"  data-bind="dxScrollView: {useNative:true}">
 		
