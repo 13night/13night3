@@ -1,9 +1,25 @@
 ﻿<!--      ЛОББИ С ЖИЛЫМИ КОМПЛЕКСАМИ      -->
 <script>
 
-$( document ).ready(function() {
-    setInterval(gohome(),5000);
-  });
+
+loadPanelVisible = ko.observable(false);
+
+startLoading2 = function() {
+
+  loadPanelVisible(true);
+
+  setTimeout($.proxy(this.finishLoading2, this), 1000);
+};
+finishLoading2 = function() {
+  loadPanelVisible(false);
+  getRss();
+};
+
+
+
+
+
+
 
  var gohome=function() {
 	AutoWashApp.app.navigate('home');
@@ -32,6 +48,12 @@ $( document ).ready(function() {
  
 	
 } 
+
+$( document ).ready(function() {
+    setInterval(gohome(),5000);
+  });
+
+
 </script>
 
 <style>
