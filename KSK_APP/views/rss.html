@@ -11,10 +11,10 @@ var rssTitle;
 loadPanelVisible = ko.observable(false);
 
 startLoading2 = function() {
-	alert('lal');
+
   loadPanelVisible(true);
 
-  setTimeout($.proxy(this.finishLoading2, this), 3000);
+  setTimeout($.proxy(this.finishLoading2, this), 1000);
 };
 finishLoading2 = function() {
   loadPanelVisible(false);
@@ -202,7 +202,7 @@ document.getElementById('rssCont').innerHTML = rssContent;
 <div data-options="dxView : { name: 'rss', toolbar:false  } " >
   <div style="background:#2d2d2d;" class="home-view"  data-options="dxContent : { targetPlaceholder: 'content' } " > 
   
-<div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading map settings...', visible: loadPanelVisible }"></div>
+<div class = 'loader' data-bind="dxLoadPanel:{message: 'Loading rss data...', visible: loadPanelVisible }"></div>
 <!-- <div data-bind="dxButton: { text: 'Click me', clickAction: getRss }"></div> used for test -->
 
 <!-- block with rss feed -->
