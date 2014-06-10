@@ -2,10 +2,12 @@
 <script>
 
 $( document ).ready(function() {
-    alert('lol');
+    setTimeout(gohome(),10000);
   });
 
-
+ var gohome=function() {
+	AutoWashApp.app.navigate('home');
+}
 
  var go=function() {
 	AutoWashApp.app.navigate('lobby');
